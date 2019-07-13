@@ -1,0 +1,31 @@
+Placas:
+1xReleeSolido-Luces
+1xReleeMecanico-Enchufe
+1xReguladorTirasLed
+1xControlAireAcondicionado
+
+
+materiales comprar:
+cargador pilas Ni-MH AAA 1.2v
+regulador 3.7 to 5
+
+calculol potencia, V*R
+
+
+
+
+material disponible:
+8xPilas recargables AAA 1.2V
+5xPilas recargables 18650 3.7V (Disponibles 1)
+20xScrew
+9xRegulador 5v to 3.3v
+5xProMini 5v
+5xCarcasa18650
+1xEmisorInfrarojo
+5xReleeMecanico 15Ax250VAC=3750W - Control 5V
+11xReleeMecanico 10Ax250VAC=2500W - Control 5V
+5xReleeMecanico 20Ax14VDC=280W - Control 5V
+10xReleeSolido 2Ax240VAC=480W - Control 5V
+9xnrf24l01 - SMD
+
+

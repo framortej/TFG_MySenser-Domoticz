@@ -1,0 +1,246 @@
+EESchema Schematic File Version 4
+LIBS:rpi_nrf24-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Raspberry_Pi_2_3 J1
+U 1 1 5C3BC0C1
+P 3050 3250
+F 0 "J1" H 3050 4728 50  0000 C CNN
+F 1 "Raspberry_Pi_2_3" H 3050 4637 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x20_P2.54mm_Vertical" H 3050 3250 50  0001 C CNN
+F 3 "https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf" H 3050 3250 50  0001 C CNN
+	1    3050 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L mysensors_radios:NRF24L01 U1
+U 1 1 5C3BC163
+P 7050 2800
+F 0 "U1" H 7050 3350 60  0000 C CNN
+F 1 "NRF24L01" H 7050 3244 60  0000 C CNN
+F 2 "mysensors_radios:NRF24L01-SMD" H 7050 2650 60  0001 C CNN
+F 3 "" H 7050 2650 60  0000 C CNN
+	1    7050 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D1
+U 1 1 5C3BC2CF
+P 1000 2850
+F 0 "D1" H 991 3066 50  0000 C CNN
+F 1 "LED" H 991 2975 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 1000 2850 50  0001 C CNN
+F 3 "~" H 1000 2850 50  0001 C CNN
+	1    1000 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D2
+U 1 1 5C3BC40D
+P 1000 3500
+F 0 "D2" H 991 3716 50  0000 C CNN
+F 1 "LED" H 991 3625 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 1000 3500 50  0001 C CNN
+F 3 "~" H 1000 3500 50  0001 C CNN
+	1    1000 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D3
+U 1 1 5C3BC4F3
+P 1000 3700
+F 0 "D3" H 991 3916 50  0000 C CNN
+F 1 "LED" H 991 3825 50  0000 C CNN
+F 2 "LED_THT:LED_D3.0mm" H 1000 3700 50  0001 C CNN
+F 3 "~" H 1000 3700 50  0001 C CNN
+	1    1000 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 5C3BC851
+P 1750 3550
+F 0 "R2" H 1820 3596 50  0000 L CNN
+F 1 "R" H 1820 3505 50  0000 L CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" V 1680 3550 50  0001 C CNN
+F 3 "~" H 1750 3550 50  0001 C CNN
+	1    1750 3550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5C3BC979
+P 1750 2850
+F 0 "R1" H 1820 2896 50  0000 L CNN
+F 1 "R" H 1820 2805 50  0000 L CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" V 1680 2850 50  0001 C CNN
+F 3 "~" H 1750 2850 50  0001 C CNN
+	1    1750 2850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5C3BCA9D
+P 1750 3650
+F 0 "R3" H 1820 3696 50  0000 L CNN
+F 1 "R" H 1820 3605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0201_0603Metric" V 1680 3650 50  0001 C CNN
+F 3 "~" H 1750 3650 50  0001 C CNN
+	1    1750 3650
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3850 3550 5700 3550
+Wire Wire Line
+	5700 3550 5700 2700
+Wire Wire Line
+	5700 2700 6650 2700
+Wire Wire Line
+	3850 3650 5850 3650
+Wire Wire Line
+	5850 3650 5850 2800
+Wire Wire Line
+	5850 2800 6650 2800
+Wire Wire Line
+	8300 5200 8300 2800
+Wire Wire Line
+	8300 2800 7450 2800
+Wire Wire Line
+	3850 3750 6000 3750
+Wire Wire Line
+	6000 3750 6000 2900
+Wire Wire Line
+	6000 2900 6650 2900
+Wire Wire Line
+	3850 3450 5600 3450
+Wire Wire Line
+	5600 3450 5600 2050
+Wire Wire Line
+	5600 2050 7450 2050
+Wire Wire Line
+	7450 2050 7450 2700
+Wire Wire Line
+	7050 2450 4800 2450
+Wire Wire Line
+	4800 2450 4800 1750
+Wire Wire Line
+	4800 1750 3250 1750
+Wire Wire Line
+	7050 3150 7050 5000
+Wire Wire Line
+	7050 5000 2950 5000
+Wire Wire Line
+	2950 5000 2950 4550
+Wire Wire Line
+	8300 5200 2100 5200
+Wire Wire Line
+	2100 5200 2100 3450
+Wire Wire Line
+	2100 3450 2250 3450
+Wire Wire Line
+	2250 3550 1900 3550
+Wire Wire Line
+	2250 3650 1900 3650
+Wire Wire Line
+	2250 2850 1900 2850
+Wire Wire Line
+	1600 3550 1400 3550
+Wire Wire Line
+	1400 3550 1400 3500
+Wire Wire Line
+	1400 3500 1150 3500
+Wire Wire Line
+	1600 3650 1400 3650
+Wire Wire Line
+	1400 3650 1400 3700
+Wire Wire Line
+	1400 3700 1150 3700
+Wire Wire Line
+	1600 2850 1150 2850
+Wire Wire Line
+	2950 5000 850  5000
+Wire Wire Line
+	850  5000 850  3700
+Connection ~ 2950 5000
+Connection ~ 850  3700
+Connection ~ 850  3500
+Wire Wire Line
+	850  3500 850  3700
+Wire Wire Line
+	850  2850 850  3500
+$Comp
+L Device:CP1 C1
+U 1 1 5C3DA868
+P 4900 1400
+F 0 "C1" H 5015 1446 50  0000 L CNN
+F 1 "CP1" H 5015 1355 50  0000 L CNN
+F 2 "Capacitor_SMD:CP_Elec_3x5.3" H 4900 1400 50  0001 C CNN
+F 3 "~" H 4900 1400 50  0001 C CNN
+	1    4900 1400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4800 1750 4900 1750
+Wire Wire Line
+	4900 1750 4900 1550
+Connection ~ 4800 1750
+Wire Wire Line
+	4900 1250 850  1250
+Wire Wire Line
+	850  1250 850  2850
+Connection ~ 850  2850
+Wire Wire Line
+	2250 3750 1850 3750
+Wire Wire Line
+	1850 3750 1850 4800
+Wire Wire Line
+	1850 4800 7750 4800
+Wire Wire Line
+	7750 4800 7750 2900
+Wire Wire Line
+	7750 2900 7450 2900
+NoConn ~ 3850 2350
+NoConn ~ 3850 2450
+NoConn ~ 3850 2650
+NoConn ~ 3850 2750
+NoConn ~ 3850 2950
+NoConn ~ 3850 3050
+NoConn ~ 3850 3150
+NoConn ~ 3850 3350
+NoConn ~ 3850 3950
+NoConn ~ 3850 4050
+NoConn ~ 2250 3950
+NoConn ~ 2250 3850
+NoConn ~ 2250 3250
+NoConn ~ 2250 3150
+NoConn ~ 2250 3050
+NoConn ~ 2250 2750
+NoConn ~ 2250 2650
+NoConn ~ 2250 2450
+NoConn ~ 2250 2350
+NoConn ~ 2850 1950
+NoConn ~ 2950 1950
+NoConn ~ 3150 1950
+NoConn ~ 2650 4550
+NoConn ~ 2750 4550
+NoConn ~ 2850 4550
+NoConn ~ 3050 4550
+NoConn ~ 3150 4550
+NoConn ~ 3250 4550
+NoConn ~ 3350 4550
+Wire Wire Line
+	3250 1750 3250 1950
+$EndSCHEMATC
