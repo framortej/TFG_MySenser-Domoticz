@@ -7,6 +7,7 @@ Placas:
 
 materiales comprar:
 cargador pilas Ni-MH AAA 1.2v
+regleta con sourgeprotection
 regulador 3.7 to 5
 
 calculol potencia, V*R
