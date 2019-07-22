@@ -1,5 +1,6 @@
 EESchema Schematic File Version 4
-EELAYER 26 0
+LIBS:P1_ElectricalManagement-cache
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -34,27 +35,5 @@ F 2 "" H 8500 2100 50  0001 C CNN
 F 3 "~" H 8500 2100 50  0001 C CNN
 	1    8500 2100
 	-1   0    0    1   
-$EndComp
-$Comp
-L mysensors_arduino:ArduinoProMini IC?
-U 1 1 5D2B2F63
-P 5700 2900
-F 0 "IC?" H 5750 4350 40  0000 C CNN
-F 1 "ArduinoProMini" H 5750 4274 40  0000 C CNN
-F 2 "mysensors_arduino:pro_mini_china" H 5700 2900 30  0001 C CIN
-F 3 "http://www.arduino.cc/en/uploads/Main/Arduino-Pro-Mini-schematic.pdf" H 5750 4183 60  0000 C CNN
-	1    5700 2900
-	1    0    0    -1  
-$EndComp
-$Comp
-L mysensors_radios:NRF24L01 U?
-U 1 1 5D2B3012
-P 3550 3800
-F 0 "U?" H 3550 4350 60  0000 C CNN
-F 1 "NRF24L01" H 3550 4244 60  0000 C CNN
-F 2 "" H 3550 3650 60  0000 C CNN
-F 3 "" H 3550 3650 60  0000 C CNN
-	1    3550 3800
-	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

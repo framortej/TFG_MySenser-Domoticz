@@ -8,7 +8,7 @@ materiales comprar:
 cargador pilas Ni-MH AAA 1.2v
 regleta con sourgeprotection
 regulador 3.7 to 5
-regulador 220 to 5v
+regulador 220 to 5v HLK-PM01
 Interface BME280 (temperatura+humedad+presion)
 
 calculol potencia, V*R
