@@ -5,9 +5,6 @@
  Date        : 02.07.2019 16:16:38
  Description : 
 ******************************************************************/
-//Include libraries
-#include <MySensors.h>
-
 //Enable debug
 #define MY_DEBUG
 
@@ -21,45 +18,76 @@
 #define PTM_PIN A0
 #define BTN_PIN 3
 #define LED_PIN 5
-#define FADE_DELAY 50
+#define FADE_DELAY 10
+
+//Include libraries
+#include <MySensors.h>
 
 //Initialize device and variables
 static int16_t currentLevel = 0;
-static bool mode = false
+volatile bool manual = false;
 
-MyMessage dimmerMsg(CHILD_ID_DIMMER, V_DIMMER);
-MyMessage lightMsg(CHILD_ID_DIMMER, V_LIGHT);
+MyMessage dimmerMsg(CHILD_ID_DIMMER, V_PERCENTAGE);
 MyMessage modeDimmerMsg(CHILD_ID_MODE_DIMMER, V_STATUS);
 
 
 void setup()
 {
-    request( CHILD_ID_RELAY, V_DIMMER );
-    pinMode(BOTON_PIN, INPUT_PULLUP);
-    pinMode(LED_PIN, OUTPUT);
-    digitalWrite(LED_PIN, LOW)
-    attachInterrupt(digitalPinToInterrupt(BOTON_PIN), blink, CHANGE);
+  request( CHILD_ID_MODE_DIMMER, V_STATUS);
+  request( CHILD_ID_DIMMER, V_PERCENTAGE );
+  
+  pinMode(BTN_PIN, INPUT_PULLUP);
+  pinMode(LED_PIN, OUTPUT);
+  digitalWrite(LED_PIN, LOW);
+  attachInterrupt(digitalPinToInterrupt(BTN_PIN), blink, RISING);
 }
 
 void presentation()
 {
-    sendSketchInfo(N_MODULE, V_MODULE);
-    present( CHILD_ID_RELAY, S_DIMMER );
+  sendSketchInfo(N_MODULE, V_MODULE);
+  present( CHILD_ID_DIMMER, S_DIMMER );
+  present( CHILD_ID_MODE_DIMMER, S_BINARY);
+}
+
+void updateState(){
+  if (!manual){
+    Serial.println( "Obteniendo valores del dimmer de la web" );
+    currentLevel = 0;
+    request( CHILD_ID_DIMMER, V_LIGHT );
+    request( CHILD_ID_DIMMER, V_PERCENTAGE );
+ }
 }
 
 void blink() {
- state = !state;
+ manual = !manual;
+ send(modeDimmerMsg.set(manual));
+ updateState();
+}
+
+void fadeToLevel( int toLevel )
+{
+    int delta = ( toLevel - currentLevel ) < 0 ? -1 : 1;
+
+    while ( currentLevel != toLevel ) {
+        currentLevel += delta;
+        analogWrite( GATE_PIN, (int)(currentLevel / 100. * 255) );
+        delay( FADE_DELAY );
+    }
 }
 
 void loop()
 {
-  if (mode == true){
+  if (manual == true){
     int valorpote=analogRead(PTM_PIN);
-    int pwm1 = map(valorpote, 0, 1023, 0, 255);
+    int pwm1 = map(valorpote, 0, 1023, 255, 0);//invertimos para ir de izq a derecha (- a +)
+    pwm1 = pwm1 > 250 ? 250 : pwm1;//Optimizamos el resultado para eliminar ruidos
+    pwm1 = pwm1 < 5   ? 0   : pwm1;
+    
     analogWrite(GATE_PIN,pwm1);
-    digitalWrite(LED_PIN, HIGH)
+    digitalWrite(LED_PIN, HIGH);
+    
   }else{
-    digitalWrite(LED_PIN, LOW)
+    digitalWrite(LED_PIN, LOW);
   }
 }
 
@@ -67,46 +95,39 @@ void loop()
 
 void receive(const MyMessage &message)
 {
-    if (message.type == V_LIGHT || message.type == V_DIMMER) {
+  Serial.print( "SensorID: ");
+  Serial.print( message.sensor);
+  Serial.print( " Type: ");
+  Serial.println( message.type);
+  
+  if (manual == false && message.sensor ==  CHILD_ID_DIMMER){
+    if (message.type == V_LIGHT || message.type == V_PERCENTAGE) {
 
-        //  Retrieve the power or dim level from the incoming request message
-        int requestedLevel = atoi( message.data );
-
-        // Adjust incoming level if this is a V_LIGHT variable update [0 == off, 1 == on]
-        requestedLevel *= ( message.type == V_LIGHT ? 100 : 1 );
-
-        // Clip incoming level to valid range of 0 to 100
-        requestedLevel = requestedLevel > 100 ? 100 : requestedLevel;
-        requestedLevel = requestedLevel < 0   ? 0   : requestedLevel;
-
-        Serial.print( "Changing level to " );
-        Serial.print( requestedLevel );
-        Serial.print( ", from " );
-        Serial.println( currentLevel );
-
-        fadeToLevel( requestedLevel );
-
-        // Inform the gateway of the current DimmableLED's SwitchPower1 and LoadLevelStatus value...
-        send(lightMsg.set(currentLevel > 0));
-
-        // hek comment: Is this really nessesary?
-        send( dimmerMsg.set(currentLevel) );
-
-
+      //  Retrieve the power or dim level from the incoming request message
+      int requestedLevel = atoi( message.data );
+      
+      // Adjust incoming level if this is a V_LIGHT variable update [0 == off, 1 == on]
+      requestedLevel *= ( message.type == V_LIGHT ? 100 : 1 );
+      
+      // Clip incoming level to valid range of 0 to 100
+      requestedLevel = requestedLevel > 100 ? 100 : requestedLevel;
+      requestedLevel = requestedLevel < 0   ? 0   : requestedLevel;
+      
+      Serial.print( "Changing level to " );
+      Serial.print( requestedLevel );
+      Serial.print( ", from " );
+      Serial.println( currentLevel );
+      
+      fadeToLevel( requestedLevel );
+      
+      //send(lightMsg.set(currentLevel > 0));
+      send( dimmerMsg.set(currentLevel) );
     }
-}
-
-/***
- *  This method provides a graceful fade up/down effect
- */
-void fadeToLevel( int toLevel )
-{
-
-    int delta = ( toLevel - currentLevel ) < 0 ? -1 : 1;
-
-    while ( currentLevel != toLevel ) {
-        currentLevel += delta;
-        analogWrite( LED_PIN, (int)(currentLevel / 100. * 255) );
-        delay( FADE_DELAY );
-    }
+  }
+  if (message.type == V_STATUS && message.sensor ==  CHILD_ID_MODE_DIMMER ) {
+    manual = message.getBool();
+    Serial.print( "Nuevo estado manual ?: " );
+    Serial.println( manual );
+    updateState();
+  }
 }
