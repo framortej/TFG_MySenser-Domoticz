@@ -1,27 +1,21 @@
-int relee = 10;
-//int boton = 8;
-
-void setup () {
-  pinMode(relee, OUTPUT); //LED 13 como salida
-  //pinMode(boton, INPUT); //LED 13 como salida
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(relee, LOW);
-  Serial.begin(9600); //Inicializo el puerto serial a 9600 baudios
+long readVcc() {
+  long result;
+  // Read 1.1V reference against AVcc
+  ADMUX = _BV(REFS0) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1);
+  delay(2); // Wait for Vref to settle
+  ADCSRA |= _BV(ADSC); // Convert
+  while (bit_is_set(ADCSRA,ADSC));
+  result = ADCL;
+  result |= ADCH<<8;
+  result = 1126400L / result; // Back-calculate AVcc in mV
+  return result;
 }
 
-void loop () {
-  if (Serial.available()) { //Si está disponible
-    char c = Serial.read(); //Guardamos la lectura en una variable char
-    if (c == 'H') { //Si es una 'H', enciendo el LED
-      Serial.println(c);
-      digitalWrite(relee, HIGH);
-      digitalWrite(LED_BUILTIN, HIGH);
-    } else if (c == 'L') { //Si es una 'L', apago el LED
-      Serial.println(c);
-      digitalWrite(relee, LOW);
-      digitalWrite(LED_BUILTIN, LOW);
-    }
-  }
-  // while(analogRead(A0)> 290){
-  // digitalWrite(relee, !digitalRead(relee));
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  Serial.println( (float)readVcc() / 1000.0 );
+  delay(1000);
 }

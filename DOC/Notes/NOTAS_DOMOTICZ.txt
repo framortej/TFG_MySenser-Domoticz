@@ -1,0 +1,5 @@
+Cambiar puertos:
+sudo service domoticz.sh stop
+sudo nano /etc/init.d/domoticz.sh
+sudo systemctl daemon-reload
+sudo service domoticz.sh start

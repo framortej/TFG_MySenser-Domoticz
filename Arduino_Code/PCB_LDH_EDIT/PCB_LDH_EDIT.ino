@@ -6,7 +6,7 @@
  Description :
 ******************************************************************/
 
-#define MY_NODE_ID 1
+#define MY_NODE_ID 5
 
 // Enable debug prints to serial monitor
 #define MY_DEBUG 
@@ -18,7 +18,7 @@
 #include <Bounce2.h>
 
 #define RELAY_PIN  6  // Pin Relay
-#define CHILD_ID_RELAY 0   // Id of the sensor child
+#define CHILD_ID_RELAY 10   // Id of the sensor child
 
 #define RELAY_ON 1
 #define RELAY_OFF 0
