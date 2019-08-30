@@ -1,0 +1,138 @@
+EESchema Schematic File Version 4
+LIBS:ReleMecanicoTest-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Screw_Terminal_01x03 J?
+U 1 1 5D2B9585
+P 1700 2200
+F 0 "J?" H 1620 1875 50  0000 C CNN
+F 1 "Screw_Terminal_01x03" H 1620 1966 50  0000 C CNN
+F 2 "" H 1700 2200 50  0001 C CNN
+F 3 "~" H 1700 2200 50  0001 C CNN
+	1    1700 2200
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector:Conn_01x03_Male J?
+U 1 1 5D2B9660
+P 7400 2150
+F 0 "J?" H 7373 2080 50  0000 R CNN
+F 1 "Conn_01x03_Male" H 7373 2171 50  0000 R CNN
+F 2 "" H 7400 2150 50  0001 C CNN
+F 3 "~" H 7400 2150 50  0001 C CNN
+	1    7400 2150
+	-1   0    0    1   
+$EndComp
+$Comp
+L Relay:FINDER-40.11-2016 K?
+U 1 1 5D2B9A71
+P 3550 2150
+F 0 "K?" H 3120 2104 50  0000 R CNN
+F 1 "FINDER-40.11-2016" H 3120 2195 50  0000 R CNN
+F 2 "Relay_THT:Relay_SPDT_Finder_40.11" H 4690 2110 50  0001 C CNN
+F 3 "https://www.finder-relais.net/de/finder-relais-serie-40.pdf" H 3550 2150 50  0001 C CNN
+	1    3550 2150
+	-1   0    0    1   
+$EndComp
+$Comp
+L pspice:R R?
+U 1 1 5D2B9B86
+P 4150 3300
+F 0 "R?" H 4218 3346 50  0000 L CNN
+F 1 "R" H 4218 3255 50  0000 L CNN
+F 2 "" H 4150 3300 50  0001 C CNN
+F 3 "~" H 4150 3300 50  0001 C CNN
+	1    4150 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L pspice:R R?
+U 1 1 5D2B9BF8
+P 4400 3250
+F 0 "R?" H 4468 3296 50  0000 L CNN
+F 1 "R" H 4468 3205 50  0000 L CNN
+F 2 "" H 4400 3250 50  0001 C CNN
+F 3 "~" H 4400 3250 50  0001 C CNN
+	1    4400 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L pspice:R R?
+U 1 1 5D2B9C28
+P 4850 3350
+F 0 "R?" H 4918 3396 50  0000 L CNN
+F 1 "R" H 4918 3305 50  0000 L CNN
+F 2 "" H 4850 3350 50  0001 C CNN
+F 3 "~" H 4850 3350 50  0001 C CNN
+	1    4850 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:S8550 Q?
+U 1 1 5D2B9D3B
+P 5850 2550
+F 0 "Q?" H 6041 2504 50  0000 L CNN
+F 1 "S8550" H 6041 2595 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 6050 2475 50  0001 L CIN
+F 3 "http://www.unisonic.com.tw/datasheet/S8550.pdf" H 5850 2550 50  0001 L CNN
+	1    5850 2550
+	1    0    0    1   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 5D2B9EC9
+P 6250 3400
+F 0 "D?" H 6241 3616 50  0000 C CNN
+F 1 "LED" H 6241 3525 50  0000 C CNN
+F 2 "" H 6250 3400 50  0001 C CNN
+F 3 "~" H 6250 3400 50  0001 C CNN
+	1    6250 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 5D2B9F4B
+P 6150 3700
+F 0 "D?" H 6141 3916 50  0000 C CNN
+F 1 "LED" H 6141 3825 50  0000 C CNN
+F 2 "" H 6150 3700 50  0001 C CNN
+F 3 "~" H 6150 3700 50  0001 C CNN
+	1    6150 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 5D2B9F71
+P 6250 4100
+F 0 "D?" H 6241 4316 50  0000 C CNN
+F 1 "LED" H 6241 4225 50  0000 C CNN
+F 2 "" H 6250 4100 50  0001 C CNN
+F 3 "~" H 6250 4100 50  0001 C CNN
+	1    6250 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Isolator:SFH617A-1 U?
+U 1 1 5D2BA217
+P 5100 4300
+F 0 "U?" H 5100 4625 50  0000 C CNN
+F 1 "SFH617A-1" H 5100 4534 50  0000 C CNN
+F 2 "Package_DIP:DIP-4_W7.62mm" H 4900 4100 50  0001 L CIN
+F 3 "http://www.vishay.com/docs/83740/sfh617a.pdf" H 5100 4300 50  0001 L CNN
+	1    5100 4300
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC

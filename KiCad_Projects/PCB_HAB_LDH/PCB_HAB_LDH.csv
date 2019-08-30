@@ -1,0 +1,12 @@
+"Id";"Identificador";"Empaquetado";"Cantidad";"Identificación";"Suministrador y ref";
+1;"C1";"CP_Radial_D5.0mm_P2.50mm";1;"CP1";;;
+2;"F1";"Fuseholder5x20_horiz_SemiClosed_Casing10x25mm";1;"Fusible";;;
+3;"F2";"Fuseholder5x20_horiz_SemiClosed_Casing10x25mm";1;"Termo";;;
+4;"HKLP1";"HKLPM01";1;"HKLPM01";;;
+5;"J1";"TerminalBlock_bornier-2_P5.08mm";1;"AC INPUT";;;
+6;"J2";"TerminalBlock_bornier-2_P5.08mm";1;"AC OUTPUT";;;
+7;"K1";"RELAY_G3MB-202P";1;"G3MB-202P";;;
+8;"RV1";"RV_Disc_D7_W3.4_P5";1;"Varistor";;;
+9;"U2";"SOT-89-3";1;"L78L33_SOT89";;;
+10;"U3";"NRF24L01";1;"NRF24L01";;;
+11;"IC1";"pro_mini_LDH";1;"ArduinoProMini";;;
