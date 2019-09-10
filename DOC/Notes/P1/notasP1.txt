@@ -1,1 +1,0 @@
-Hay que usar un octoacoplador para separar la electronica de 5v de la seccion de 220
