@@ -1,3 +1,0 @@
-(sym_lib_table
-  (lib (name rpi_nrf24-rescue)(type Legacy)(uri ${KIPRJMOD}/rpi_nrf24-rescue.lib)(options "")(descr ""))
-)
