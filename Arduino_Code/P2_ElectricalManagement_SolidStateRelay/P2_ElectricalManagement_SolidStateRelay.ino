@@ -44,10 +44,10 @@ void setup()
   pinMode(RELAY_PIN, OUTPUT); 
 
   // Get online state from gateway
-  request(CHILD_ID_RELAY, V_STATUS);
+  //request(CHILD_ID_RELAY, V_STATUS);
 
   //wait 3 seconds to gw message, them charge local state
-  wait(3000);
+  //wait(3000);
   
   // Get local state
   state = loadState(CHILD_ID_RELAY);

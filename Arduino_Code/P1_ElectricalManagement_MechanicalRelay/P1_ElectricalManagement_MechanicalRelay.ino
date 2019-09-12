@@ -15,15 +15,15 @@
 // Enable and select radio type attached
 #define MY_RADIO_RF24
 
+// Child ID for gateway
+#define CHILD_ID_RELAY 11
+
 // Board Info
 #define N_MODULE "P1_MechanicalRelay"
 #define V_MODULE "1.2"
 
 // Include libraries
 #include <MySensors.h>
-
-// Child ID for gateway
-#define CHILD_ID_RELAY 11
 
 // Define ports
 #define RELAY_PIN  6
@@ -36,7 +36,7 @@
 bool state;
 
 // Initialize MyMessage
-MyMessage msgRELAY(CHILD_ID_RELAY,V_STATUS);
+MyMessage stateMsg(CHILD_ID_RELAY, V_STATUS);
 
 void setup()  
 {  
@@ -44,10 +44,10 @@ void setup()
   pinMode(RELAY_PIN, OUTPUT); 
 
   // Get online state from gateway
-  request(CHILD_ID_RELAY, V_STATUS);
+  //request( CHILD_ID_RELAY, V_STATUS);
 
   //wait 3 seconds to gw message, them charge local state
-  wait(3000);
+  //wait(3000);
   
   // Get local state
   state = loadState(CHILD_ID_RELAY);

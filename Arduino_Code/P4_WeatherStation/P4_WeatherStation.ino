@@ -83,9 +83,9 @@ void sendBatteryStatus(){
     String strOut;
 
     // Send notification to gateway
-    strOut = "Getting the battery %";
-    strOut.toCharArray(Output,40);
-    send(batteryPercentMsg.set(Output));
+    //strOut = "Getting the battery %";
+    //strOut.toCharArray(Output,40);
+    //send(batteryPercentMsg.set(Output));
     
     // Get the battery stats
     int sensorValue = analogRead(BATTERY_SENSE_PIN);
@@ -131,11 +131,11 @@ void sendBatteryStatus(){
       digitalWrite(LEDLOW_PIN, HIGH);
       digitalWrite(LEDMID_PIN, HIGH);
       digitalWrite(LEDHIGH_PIN, HIGH);
-      sleep(10000);
+      delay(3000);
      }else if(batteryPcnt >= 70 && batteryPcnt < 85){
       digitalWrite(LEDMID_PIN, HIGH);
       digitalWrite(LEDLOW_PIN, HIGH);
-      int count = 10;
+      int count = 3;
       while (count > 0) {
         digitalWrite(LEDHIGH_PIN, !digitalRead(LEDHIGH_PIN));
         count--; 
@@ -145,11 +145,11 @@ void sendBatteryStatus(){
       digitalWrite(LEDLOW_PIN, HIGH);
       digitalWrite(LEDMID_PIN, HIGH);
       digitalWrite(LEDHIGH_PIN, LOW);
-      sleep(10000);
+      delay(3000);
      }else if(batteryPcnt >= 40 && batteryPcnt < 55){
       digitalWrite(LEDLOW_PIN, HIGH);
       digitalWrite(LEDHIGH_PIN, LOW);
-      int count = 10;
+      int count = 3;
       while (count > 0) {
         digitalWrite(LEDMID_PIN, !digitalRead(LEDMID_PIN));
         count--; 
@@ -159,11 +159,11 @@ void sendBatteryStatus(){
       digitalWrite(LEDLOW_PIN, HIGH);
       digitalWrite(LEDMID_PIN, LOW);
       digitalWrite(LEDHIGH_PIN, LOW);
-      sleep(10000);
+      delay(3000);
      }else if(batteryPcnt < 10){
       digitalWrite(LEDMID_PIN, LOW);
       digitalWrite(LEDHIGH_PIN, LOW);
-      int count = 10;
+      int count = 3;
       while (count > 0) {
         digitalWrite(LEDLOW_PIN, !digitalRead(LEDLOW_PIN));
         count--; 
