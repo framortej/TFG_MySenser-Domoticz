@@ -1,13 +1,13 @@
 /*****************************************************************
- Project        : P2 ElectricalManagement Solid State Relay
- Libraries      : MySensors
- Author         : Francisco Moreno Tejeda
- Description    : Electrical management circuit for lamps
- InitialRelease : 02.06.2019 
- LastUpdate     : 30.08.2019 
+  Project        : P2 ElectricalManagement Solid State Relay
+  Libraries      : MySensors
+  Author         : Francisco Moreno Tejeda
+  Description    : Electrical management circuit for lamps
+  InitialRelease : 02.06.2019
+  LastUpdate     : 30.08.2019
 *****************************************************************/
 // Enable debug prints to serial monitor
-//#define MY_DEBUG 
+//#define MY_DEBUG
 
 //Define the node ID
 #define MY_NODE_ID 20
@@ -36,24 +36,24 @@
 bool state;
 
 // Initialize MyMessage
-MyMessage msgRELAY(CHILD_ID_RELAY,V_STATUS);
+MyMessage msgRELAY(CHILD_ID_RELAY, V_STATUS);
 
-void setup()  
-{  
+void setup()
+{
   // Setting up pins
-  pinMode(RELAY_PIN, OUTPUT); 
+  pinMode(RELAY_PIN, OUTPUT);
 
   // Get online state from gateway
   //request(CHILD_ID_RELAY, V_STATUS);
 
   //wait 3 seconds to gw message, them charge local state
-  //wait(3000);
-  
+  // wait(3000);
+
   // Get local state
   state = loadState(CHILD_ID_RELAY);
 
   // Change to real state
-  digitalWrite(RELAY_PIN, state?RELAY_ON:RELAY_OFF);
+  digitalWrite(RELAY_PIN, state ? RELAY_ON : RELAY_OFF);
 }
 
 void presentation()  {
@@ -67,19 +67,19 @@ void presentation()  {
 
 
 void receive(const MyMessage &message) {
-  
-  if (message.type == V_STATUS){
+
+  if (message.type == V_STATUS) {
     // Get the value of the payload
     state = message.getBool();
-    
-#ifdef MY_DEBUG      
+
+#ifdef MY_DEBUG
     Serial.print("New state receive: ");
     Serial.println(state);
 #endif
-    
+
     // Assign the new state and save in local memory
-    digitalWrite(RELAY_PIN, state?RELAY_ON:RELAY_OFF);
+    digitalWrite(RELAY_PIN, state ? RELAY_ON : RELAY_OFF);
     saveState(CHILD_ID_RELAY, state);
   }
-  
+
 }
